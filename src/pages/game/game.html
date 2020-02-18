@@ -1,0 +1,138 @@
+<!--
+  Generated template for the GamePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!--<ion-navbar>
+    <ion-title>game</ion-title>
+  </ion-navbar>-->
+
+</ion-header>
+
+
+<ion-content padding style="text-align: center;" class="color-change">
+
+  <!--<div *ngIf="mode == MODE_READY" id="modeSelect" class="center" style="margin-top: 50px;" >
+
+  </div>-->
+
+  <div *ngIf="mode == MODE_STARTING || mode == MODE_PLAYING || mode == MODE_FINISHED;" class="animated fadeInDownBig" style="display: flex;justify-content: space-between;" >
+    <span style="" >points<div countUp [countUp]="{useEasing: false}" duration="0.5" [startVal]="previousPoints" [endVal]="points" style="font-size: 25px;animation-timing-function: linear !important;" class="animated {{actionFail ? 'jello faster': actionSuccess ? '':''}}" ></div></span>
+    <span *ngIf="gameMode !== GAME_MODES.PRACTICE" style="" class="{{isFinishingTransition ? 'animated bounceOutUp faster': mode == MODE_FINISHED ? 'hide':'animated fadeInDownBig delay-200ms'}}" ><br/><ion-icon *ngFor="let item of livesArr" name="{{item.iconName}}" style="margin: 0 5px;font-size: 30px;color: hotpink;"></ion-icon></span>
+    <span *ngIf="gameMode == GAME_MODES.PRACTICE" style="font-size: 1.3em;" class="{{isFinishingTransition ? 'animated bounceOutUp faster': mode == MODE_FINISHED ? 'hide':'animated fadeInDownBig delay-200ms'}}" ><br/>Practice Mode</span>
+    <span style="" >Swipes<div style="font-size: 25px;" >{{currentActionRound}}</div></span>
+  </div>
+
+  <div *ngIf="mode == MODE_PLAYING || mode == MODE_STARTING" >
+
+    <h2 *ngIf="mode == MODE_PLAYING" style="text-align: center;margin-top: 70px;" class="animated {{isFinishingTransition ? 'bounceOutRight':'bounceIn faster'}}" >
+      <span ><span style="font-size: 27px;" >Swipe {{conversion[currentAction] ? conversion[currentAction].name: ''}}</span>
+
+        <div id="action-stars"></div>
+
+        <br>
+        <br>
+        <ion-icon id="swipeDirImage" name="arrow-round-up" class="center" style="transform: rotate(0deg);transition: transform 0.15s ease 0s;background-color: rgb(80, 80, 80);border-radius: 50%;width: 50px;height: 50px;margin: auto;font-size: 40px;" ></ion-icon>
+<!--
+        <img id="swipeDirImage" width="50" height="50" src="../../assets/imgs/arrow.png" style="transition: transform 0.1s;background-color: #505050;border-radius: 50%;box-shadow: 0px 0px 25px 0px #fff;" >
+-->
+<!--
+        <img width="50" height="50" src="../../assets/imgs/arrow.png" style="transition: transform 0.1s;" id="swipeDirImage" >
+-->
+      </span>
+    </h2>
+
+    <div *ngIf="showStartTimerCountdown" style="margin-top: 70px;" class="animated tada" >
+      <div style="font-size: 25px;" >GET READY!</div>
+      <div id="countdown" class="center" >
+        <div id="countdown-number">{{startTimerCountdownSeconds}}</div>
+        <svg>
+          <circle r="18" cx="20" cy="20" class="animated delay-1s"></circle>
+        </svg>
+      </div>
+    </div>
+
+    <!--
+        <div *ngIf="mode == MODE_PLAYING;" id="swipeContainer" class="animated {{actionFail ? 'jello faster border-red': actionSuccess ? 'pulse faster border-green':''}}"  (swipe)="swipeEvent($event)" style="border: 2px solid white; width: 80vw;height: 50vh;margin: 50px auto;border-radius: 20px;" ></div>
+    -->
+    <!-- ORIGINAL ----------
+       <span *ngIf="countUpEndVal" class="animated faster {{isFinishingTransition ? 'zoomOutLeft': actionFail ? 'zoomOut':'comboPulse infinite'}}" style="font-size: 27px;color: red;position: absolute;top: 185px;left: 20px;transform: rotate(-35deg);" >
+         <span>COMBO x{{comboSwipesNum}}<br>+</span>
+         <span countUp duration="0.5" [startVal]="countUpStartVal" [endVal]="countUpEndVal" style="animation-timing-function: linear !important;" ></span>
+       </span>
+    -->
+
+
+
+
+       <span *ngIf="countUpEndVal" class="animated faster font-effect-combo {{isFinishingTransition ? 'zoomOutLeft': actionFail ? 'zoomOut':'comboPulse infinite'}}">
+         <span>COMBO x{{comboSwipesNum}}<br>+</span>
+         <span countUp [countUp]="{useEasing: false}" duration="0.5" [startVal]="countUpStartVal" [endVal]="countUpEndVal" ></span>
+       </span>
+
+
+      <div *ngIf="gameTime_seconds" id="gameTimer" class="center {{isFinishingTransition ? 'animated fadeOutRight faster':'animated bounceIn faster'}}" style="position: fixed;top: 50px;right: 50px;" >
+        <div id="gameTimerCountDownNum">{{gameTime_seconds}}</div>
+        <svg>
+          <circle id="gameTimeCircle" r="18" cx="20" cy="20" class="" [ngStyle]="{animationDuration: gameTimeAnimDuration_seconds}" ></circle>
+        </svg>
+      </div>
+
+       <div class="center cubeContainer animated {{isFinishingTransition ? 'bounceOutUp' : 'bounceInRight'}}" >
+         <div id="swipeContainer" swipe-manager (onSwipeRight)="swipeEvent($event)" (onSwipeLeft)="swipeEvent($event)" (onSwipeUp)="swipeEvent($event)" (onSwipeDown)="swipeEvent($event)" class="scene">
+<!--
+           <div id="cube" class="cube spi-transparent-cube-skin">
+-->
+           <div id="cube" class="cube {{cubeSkin}}">
+             <div class="cube__face cube__face--front"></div>
+             <div class="cube__face cube__face--back"></div>
+             <div class="spi-cube-text" style="position: absolute;font-size: 35px;margin-top: -2px;">Spin It!</div>
+             <div class="spi-cube-text spi-cube-totalpoints-text" style="position: absolute;font-size: 35px;left: 50px;bottom: 0;">
+               <div *ngIf="currentUserProvider.playerData" countUp [countUp]="{useEasing: false}" duration="0.5" [startVal]="currentUserProvider.playerData.totalPoints + previousPoints" [endVal]="currentUserProvider.playerData.totalPoints + points" class="spi-cube-text" style="font-size: 25px;animation-timing-function: linear !important;" ></div>
+               <div *ngIf="!currentUserProvider.playerData" countUp [countUp]="{useEasing: false}" duration="0.5" [startVal]="0 + previousPoints" [endVal]="0 + points" class="spi-cube-text" style="font-size: 25px;animation-timing-function: linear !important;" ></div>
+             </div>
+             <div class="cube__face cube__face--right">
+               <div class="spi-cube-text" style="font-size: 35px;">
+                 <div style="height: 40px;line-height: normal;text-align: left;padding: 20px;" class="spi-cube-text">Just</div>
+                 <div style="height: 40px;line-height: normal;text-align: left;padding: 20px;" class="spi-cube-text">Swipe</div>
+               </div>
+             </div>
+             <div class="cube__face cube__face--left"></div>
+             <div class="cube__face cube__face--top"></div>
+             <div class="cube__face cube__face--bottom"></div>
+             <!--<div class="cube__face cube__face&#45;&#45;front">front</div>
+             <div class="cube__face cube__face&#45;&#45;back">back</div>
+             <div class="cube__face cube__face&#45;&#45;right">right</div>
+             <div class="cube__face cube__face&#45;&#45;left">left</div>
+             <div class="cube__face cube__face&#45;&#45;top">top</div>
+             <div class="cube__face cube__face&#45;&#45;bottom">bottom</div>-->
+           </div>
+         </div>
+       </div>
+
+    <div *ngIf="gameMode == GAME_MODES.PRACTICE" style="position: absolute;bottom: 0;width: 100%;display: flex;justify-content: flex-end;z-index: 1;" >
+      <!--<span style="width: 39%;height: 60px;border: 1px solid white;border-radius: 0 10px 0 0;border-left: none;border-bottom: none;font-size: 24px;color: white;background-color: deepskyblue;" class="center animated slideInLeft" (click)="goBack()" >Back</span>-->
+      <span style="width: 33%;height: 55px;border: 1px solid white;border-radius: 10px 0 0 0;border-right: none;border-bottom: none;font-size: 24px;color: white;background-color: limegreen;overflow: hidden;" class="center spi-glow animated slideInRight" (click)="finishGame('Practice Mode')" >Finish</span>
+    </div>
+
+     </div>
+
+     <div *ngIf="mode == MODE_FINISHED;" id="resultsDiv" style="margin-top: 50px;text-align: center;"  >
+
+       <div style="font-size: 25px;" class="animated faster fadeInDownBig" >{{finishGameReason}}</div>
+
+       <div style="margin-top: 35px;" class="animated faster fadeInDownBig" ><span style="font-size: 30px;" countUp [countUp]="{useEasing: false}" duration="3.0" [startVal]="0" [endVal]="points" ></span> points!</div>
+       <div style="margin-top: 20px;" class="animated faster fadeInDownBig" ><span style="font-size: 30px;" countUp [countUp]="{useEasing: false}" duration="3.0" [startVal]="0" [endVal]="currentActionRound" ></span> Swipes!</div>
+
+       <div class="animated fadeInUpBig" >
+         <div style="width: 150px; height: 70px;border: 1px solid white;margin: 50px auto 0;border-radius: 10px;font-size: 18px;background-color: limegreen;" class="center spi-glow" (click)="reset()" >Play Again</div>
+         <div style="width: 150px; height: 70px;border: 1px solid white;margin: 20px auto;border-radius: 10px;font-size: 18px;background-color: deepskyblue;" class="center" (click)="showLeaderboards()" >LeaderBoard</div>
+         <div style="width: 150px; height: 70px;border: 1px solid white;margin: 20px auto;border-radius: 10px;font-size: 18px;background-color: deepskyblue;" class="center" (click)="goHome()" >Home</div>
+       </div>
+
+     </div>
+
+   </ion-content>

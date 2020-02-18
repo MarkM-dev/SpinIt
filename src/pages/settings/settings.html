@@ -1,0 +1,99 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+ <!-- <ion-navbar>
+    <ion-title>settings</ion-title>
+  </ion-navbar>-->
+
+</ion-header>
+
+
+<ion-content style="text-align: center;overflow: hidden;" class="color-change" >
+
+  <div class="center animated slideInLeft" style="
+    z-index: 1;
+    max-width: 70%;
+    padding: 0 16px;
+    height: 60px;
+    border: 1px solid white;
+    border-radius: 0 0 10px 0;
+    border-left: none;
+    border-top: none;
+    font-size: 24px;
+    color: white;
+    background-color: deepskyblue;
+    overflow: hidden;
+    left: 0;
+    position: absolute;
+    ">{{currentUserProvider.playerData.displayName}}</div>
+
+  <div style="z-index: 1;
+    width: 80px;
+    height: 30px;
+    border: 1px solid white;
+    border-radius: 0 0 0 10px;
+    border-right: none;
+    border-top: none;
+    font-size: 14px;
+    color: white;
+    background-color: deeppink;
+    overflow: hidden;
+    right: 0;
+    position: absolute;" class="center animated slideInRight" (click)="confirmLogout()" >Logout</div>
+
+  <div id="stars"></div>
+
+  <div class="menu-two-btn-container animated fadeIn delay-1s" style="margin-top: 100px;" >
+    <div class="center menu-btn" style="width: 190px;" (click)="showAllAchievements()" >Achievements</div>
+    <div class="center menu-btn" (click)="showLeaderboards()" >Leader boards</div>
+  </div>
+
+  <ion-scroll scrollY="true" class="scoreContainer" style="" >
+
+    <div class="animated fadeInUpBig" >
+      <div countUp [countUp]="{useEasing: false}" duration="2.5" [startVal]="0" [endVal]="currentUserProvider.playerData.totalPoints" ></div>
+      <div>Total points</div>
+    </div>
+
+    <div class="delay-100ms animated fadeInUpBig" >
+      <div countUp [countUp]="{useEasing: false}" duration="2.5" [startVal]="0" [endVal]="currentUserProvider.playerData.pointsHighScore" ></div>
+      <div>Most points in a game</div>
+    </div>
+
+    <div class="delay-200ms animated fadeInUpBig" >
+      <div countUp [countUp]="{useEasing: false}" duration="2.5" [startVal]="0" [endVal]="currentUserProvider.playerData.swipesHighScore" ></div>
+      <div>Most swipes in a game</div>
+    </div>
+  </ion-scroll>
+
+
+
+  <div class="animated slideInUp" style="z-index: 1;position: absolute;bottom: 0;width: 100%;display: flex;justify-content: space-between;color: black;" >
+    <span style="width: 160px;height: 60px;border: 1px solid white;border-radius: 0 10px 0 0;border-left: none;border-bottom: none;font-size: 24px;color: white;background-color: deepskyblue;" class="center" (click)="goBack()" >Back</span>
+    <span *ngIf="inAppPurchaseService.remove_ads_ProductObj && admobService.bADS_ENABLED" style="width: 160px;height: 60px;border: 1px solid white;border-radius: 10px 0 0 0;border-right: none;border-bottom: none;font-size: 24px;color: white;background-color: limegreen;overflow: hidden;" class="center spi-glow" (click)="removeAds()" >{{inAppPurchaseService.remove_ads_ProductObj.alias}} {{inAppPurchaseService.remove_ads_ProductObj.price}}</span>
+  </div>
+
+
+ <!-- <div style="color: white;margin-top: 40px;" >
+    <div >Admob</div>
+    <div style="padding: 10px 0;margin: 10px auto;border: 1px solid white;" (click)="showAdBanner()" >show banner</div>
+    <div style="padding: 10px 0;margin: 10px auto;border: 1px solid white;" (click)="hideAdBanner()" >hide banner</div>
+    <div style="padding: 10px 0;margin: 10px auto;border: 1px solid white;" (click)="testInterstitial()" >Interstitial</div>
+    <div style="padding: 10px 0;margin: 10px auto;border: 1px solid white;" (click)="testInterstitialVideo()" >Interstitial Video</div>
+    <div style="padding: 10px 0;margin: 10px auto;border: 1px solid white;" (click)="testAdmobRewardVideo()" >Reward Video</div>
+
+    <div style="margin-top: 40px;" >Google Play Games</div>
+    <div style="padding: 10px 0;margin: 10px auto;border: 1px solid white;" (click)="testGPlayLogin()" >login</div>
+    <div style="padding: 10px 0;margin: 10px auto;border: 1px solid white;" (click)="test_GPG_fetchPlayerData()" >player data</div>
+    <div style="padding: 10px 0;margin: 10px auto;border: 1px solid white;" (click)="testGPlaySignOut()" >Sign Out</div>
+    <div style="padding: 10px 0;margin: 10px auto;border: 1px solid white;" (click)="testShowLeaderboards()" >All Leaderboards</div>
+    <div style="padding: 10px 0;margin: 10px auto;border: 1px solid white;" (click)="testShowAchievements()" >Show Achievements</div>
+    <div style="padding: 10px 0;margin: 10px auto;border: 1px solid white;" (click)="testUnlockAchievement()" >unlock Achievement</div>
+  </div>-->
+
+</ion-content>

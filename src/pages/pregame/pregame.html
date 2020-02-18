@@ -1,0 +1,151 @@
+<!--
+  Generated template for the PregamePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!--<ion-navbar>
+    <ion-title>Pregame</ion-title>
+  </ion-navbar>-->
+
+</ion-header>
+
+
+<ion-content class="color-change" style="overflow: hidden;" >
+
+  <div id="stars"></div>
+
+  <ion-scroll scrollY="true" style="height: 100%;">
+
+    <div class="animated slideInLeft" style="font-size: 30px;margin-top: 30px;padding-left: 20px;" >Game Modes</div>
+
+    <ion-scroll scrollX="true" style="white-space: nowrap;height: 275px;padding: 10px;" >
+
+      <div (click)="selectGameMode(GAME_MODES.TIME_ATTACK);" class="animated flipInX delay-500ms {{selectedGameMode == GAME_MODES.TIME_ATTACK ? 'spi-glow-big':''}}" style="display: inline-block;overflow: hidden;height: 200px;width: 125px;border: 2px solid white;padding: 5px;margin: 20px 10px 10px 16px;border-radius: 10px;zoom: 1.1;" >
+        <div *ngIf="showCardShine" class="shine"></div>
+        <div style="height: 130px;border-bottom: 2px solid white;text-align: center;border-radius: 50%;font-size: 18px;flex-direction: column;" class="center" >
+          <div><ion-icon name="alarm" style="font-size: 40px;" ></ion-icon></div>
+          <div style="margin-top: 10px;" >Time<br>Attack</div>
+        </div>
+
+        <div style="padding: 0 5px;" >
+          <div style="margin-top: 15px;" >
+            <div><ion-icon name="md-heart-outline" style="color: white;" ></ion-icon>&nbsp; 3 Lives</div>
+          </div>
+          <div style="margin-top: 5px;" >
+            <div><ion-icon name="md-time" style="color: white;" ></ion-icon>&nbsp; 15 seconds</div>
+          </div>
+        </div>
+      </div>
+
+      <div (click)="selectGameMode(GAME_MODES.PRACTICE);" class="animated flipInX delay-500ms {{selectedGameMode == GAME_MODES.PRACTICE ? 'spi-glow-big':''}}" style="display: inline-block;overflow: hidden;height: 200px;width: 125px;border: 2px solid white;padding: 5px;margin: 20px 10px 10px 16px;border-radius: 10px;zoom: 1.1;" >
+        <div *ngIf="showCardShine" class="shine"></div>
+        <div style="height: 130px;border-bottom: 2px solid white;text-align: center;border-radius: 50%;font-size: 18px;flex-direction: column;" class="center" >
+          <div><ion-icon name="alarm" style="font-size: 40px;" ></ion-icon></div>
+          <div style="margin-top: 10px;" >Practice</div>
+        </div>
+
+        <div style="padding: 0 5px;" >
+          <div style="margin-top: 15px;" >
+            <div><ion-icon name="md-heart-outline" style="color: white;" ></ion-icon>&nbsp; ∞ lives</div>
+          </div>
+          <div style="margin-top: 5px;" >
+            <div><ion-icon name="md-time" style="color: white;" ></ion-icon>&nbsp; ∞ time</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="animated flipInX delay-600ms" style="display: inline-block;overflow: hidden;height: 200px;width: 125px;border: 2px solid white;padding: 5px;margin: 22px 10px 10px 5px;border-radius: 10px;background-color: dodgerblue;color: lightgray;zoom: 1.1;" >
+        <div style="height: 132px;border-bottom: 2px solid white;text-align: center;border-radius: 50%;font-size: 18px;flex-direction: column;" class="center" >
+          <div style="" >Coming<br>Soon!</div>
+        </div>
+
+        <div style="padding: 0 5px;" >
+          <div style="margin-top: 15px;" >
+            <div style="" >Coming Soon!</div>
+          </div>
+          <div style="margin-top: 5px;" >
+            <div style="" >Coming Soon!</div>
+          </div>
+        </div>
+      </div>
+
+    </ion-scroll>
+
+
+    <div class="animated slideInLeft" style="font-size: 30px;padding-left: 20px;" >Select Cube</div>
+
+    <ion-scroll scrollX="true" style="white-space: nowrap;height: 300px;padding: 20px 10px 10px 10px;" >
+
+      <div (click)="selectCubeSkin(CUBE_SKINS.DEFAULT);" class="card animated flipInY delay-1s {{selectedCubeSkin == CUBE_SKINS.DEFAULT ? 'spi-glow-big':''}}" style="display: inline-block;overflow: hidden;height: 200px;width: 125px;border: 2px solid white;padding: 5px;margin: 20px 10px 10px 18px;border-radius: 10px;">
+        <div class="shine"></div>
+        <div class="center" style="height: 130px;text-align: center;font-size: 18px;flex-direction: column;line-height: normal;">
+          <div src="././assets/imgs/logo.png" width="50" height="50" style="width: 70px;height: 70px;background-image: url('../../assets/imgs/logo.png');background-repeat: no-repeat;background-size: contain;"></div>
+        </div>
+
+        <div style="padding: 0 5px;height: 35px;line-height: normal;" class="center">
+          <div style="margin-top: 15px;">
+            <div style="font-size: 1.2em;">Default</div>
+          </div>
+        </div>
+      </div>
+
+      <div (click)="selectCubeSkin(CUBE_SKINS.FROSTED_CUBE);" class="card animated flipInY delay-1500ms {{selectedCubeSkin == CUBE_SKINS.FROSTED_CUBE ? 'spi-glow-big':''}}" style="display: inline-block;overflow: hidden;height: 200px;width: 125px;border: 2px solid white;padding: 5px;margin: 0 10px 10px 16px;border-radius: 10px;">
+        <div class="shine"></div>
+        <div class="center" style="height: 130px;text-align: center;font-size: 18px;flex-direction: column;line-height: normal;">
+          <div src="././assets/imgs/logo.png" width="50" height="50" style="width: 70px;height: 70px;opacity: 0.7;background-image: url('../../assets/imgs/frosted_cube.png');background-repeat: no-repeat;background-size: contain;"></div>
+        </div>
+
+        <div style="padding: 0 5px;height: 35px;line-height: normal;" class="center">
+          <div style="margin-top: 15px;">
+            <div style="font-size: 1.2em;white-space: normal;">Frosted</div>
+          </div>
+        </div>
+      </div>
+
+      <!--<div class="contain" style="padding: 0 16px;display: flex;">
+
+        <div class="card center" style="height: 200px;width: 125px;flex-direction: column;box-shadow: 0px 0px 20px 5px #fff;">
+          <div src="././assets/imgs/logo.png" width="50" height="50" style="width: 70px;height: 70px;background-image: url('././assets/imgs/logo.png');background-repeat: no-repeat;background-size: contain;"></div>
+          <div style="" class="center">Default</div>
+          <div class="shine"></div>
+        </div>
+
+        <div class="card" style="height: 200px;width: 125px;display: inline-block;height: 200px;width: 125px;display: inline-flex;flex-direction: column;">
+          <div class="shine"></div>
+        </div>
+
+      </div>-->
+
+    </ion-scroll>
+
+  </ion-scroll>
+
+
+
+
+
+
+
+  <!--<ion-scroll scrollX="true" style="white-space: nowrap;height: 290px;padding: 10px;margin-top: 5%;" >
+
+    <div class="card center" style="height: 200px;width: 125px;flex-direction: column;box-shadow: 0px 0px 20px 5px #fff;">
+      <div src="././assets/imgs/logo.png" width="50" height="50" style="width: 70px;height: 70px;background-image: url('././assets/imgs/logo.png');background-repeat: no-repeat;background-size: contain;"></div>
+      <div style="" class="center">Default</div>
+      <div class="shine"></div>
+    </div>
+
+    <div class="card" style="height: 200px;width: 125px;display: inline-block;height: 200px;width: 125px;display: inline-flex;flex-direction: column;">
+      <div class="shine"></div>
+    </div>
+
+  </ion-scroll>-->
+
+ <div style="position: absolute;bottom: 0;width: 100%;display: flex;justify-content: space-between;z-index: 1;" >
+   <span style="width: 39%;height: 60px;border: 1px solid white;border-radius: 0 10px 0 0;border-left: none;border-bottom: none;font-size: 24px;color: white;background-color: deepskyblue;" class="center animated slideInLeft" (click)="goBack()" >Back</span>
+   <span style="width: 39%;height: 60px;border: 1px solid white;border-radius: 10px 0 0 0;border-right: none;border-bottom: none;font-size: 24px;color: white;background-color: limegreen;overflow: hidden;" class="center spi-glow animated slideInRight" (click)="goToGameFromStartBtn()" >Start</span>
+ </div>
+
+</ion-content>

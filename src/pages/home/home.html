@@ -1,0 +1,49 @@
+<ion-header>
+ <!-- <ion-navbar>
+    <ion-title>
+      Spin It!
+    </ion-title>
+  </ion-navbar>-->
+</ion-header>
+
+<ion-content padding style="text-align: center;" class="color-change">
+
+  <div id="stars"></div>
+
+  <div *ngIf="showUserSection" (click)="currentUserProvider.playerData ? goToSettingsFromProfileBanner():userLogin()" class="animated fadeInDown user-details-section user-logged-{{currentUserProvider.playerData ? 'in':'out'}}" style="transition: 1s" >
+    <div *ngIf="currentUserProvider.playerData" >
+      <span>{{currentUserProvider.playerData.displayName}}</span> | <span *ngIf="currentUserProvider.playerData.totalPoints" ><span>{{currentUserProvider.playerData.totalPoints}}</span><span style="font-size: 10px;" >Points</span></span>
+    </div>
+    <div *ngIf="!currentUserProvider.playerData" >Login with Google Play Games<br>for leaderboards</div>
+  </div>
+
+  <div id="spinItTitle">Spin It!</div>
+
+  <div class="menu-two-btn-container" >
+    <div class="center menu-btn spi-glow" style="background-color: limegreen;" (click)="play()" >Play</div>
+    <div class="center menu-btn" (click)="goToLeaderboards()" >Leader boards</div>
+  </div>
+
+  <div class="menu-two-btn-container" >
+    <div class="center menu-btn" (click)="goToSettings()" >Player</div>
+    <div class="center menu-btn" (click)="shareToSocial()" >Invite a friend</div>
+  </div>
+
+  <div class="menu-two-btn-container" >
+    <!--<div class="center menu-btn" (click)="goToAbout()" >About</div>-->
+
+    <div *ngIf="inAppPurchaseService.remove_ads_ProductObj && admobService.bADS_ENABLED" class="center menu-btn spi-glow" style="background-color: limegreen;overflow: hidden;position: relative;" (click)="removeAds()" ><span>{{inAppPurchaseService.remove_ads_ProductObj.alias}} {{inAppPurchaseService.remove_ads_ProductObj.price}}</span><div class="shine" ></div></div>
+  </div>
+
+
+  <!--<div id="countdown">
+    <div id="countdown-number"></div>
+    <svg>
+      <circle r="18" cx="20" cy="20"></circle>
+    </svg>
+  </div>
+-->
+
+</ion-content>
+
+
